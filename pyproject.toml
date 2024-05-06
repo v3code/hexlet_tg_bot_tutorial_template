@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "telegram-shop-bot"
+version = "0.1.0"
+description = ""
+authors = ["v3code <vitalik.w555@gmail.com>"]
+readme = "README.md"
+packages = [
+    {include = "shop_bot"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aiogram = {extras = ["i18n"], version = "^3.5.0"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.29"}
+python-dotenv = "^1.0.1"
+aiosqlite = "^0.20.0"
+asyncpg = "^0.29.0"
+alembic = "^1.13.1"
+
+
+[tool.poetry.scripts]
+start = "shop_bot.scripts.run_bot:main"
+add_admin = "shop_bot.scripts.add_admin:main"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
+yapf = "^0.40.2"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
