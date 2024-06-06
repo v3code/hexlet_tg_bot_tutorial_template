@@ -15,4 +15,4 @@ def get_total_pages(limit: int, total_entries: int):
 
 
 def get_offset_from_page(page: int, limit: int):
-    return (page - 1) * limit + 1
+    return (page - 1) * limit

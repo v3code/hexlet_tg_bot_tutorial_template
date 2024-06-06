@@ -1,4 +1,5 @@
 from decimal import Decimal
+import logging
 from typing import Optional
 
 from shop_bot.db import async_session
@@ -65,11 +66,11 @@ async def get_products_paginated(page: int = 1, limit: int = 5):
     if page > total_pages:
         page = total_pages
     offset = get_offset_from_page(page, limit)
+    logging.info(offset)
     async with async_session() as session:
         result = await session.execute(
-            get_products_with_limit_and_offset(offset, limit))
+            get_products_with_limit_and_offset(limit, offset))
         products = result.mappings().all()
-
         return ProductsPaginated.from_mapped_sequence(total_pages=total_pages,
                                                       page=page,
                                                       products_rows=products)

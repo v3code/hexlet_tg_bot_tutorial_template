@@ -38,5 +38,6 @@ def get_total_products():
 
 
 def get_products_with_limit_and_offset(limit: int, offset: int):
-    return select(Product.id, Product.name, Product.price).where(~Product.archived).limit(limit).offset(
-        offset).order_by(Product.updated_at)
+    return select(Product.id, Product.name, Product.price).where(~Product.archived) \
+        .offset(offset).limit(limit).order_by(Product.updated_at)
+    
